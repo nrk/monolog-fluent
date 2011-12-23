@@ -1,0 +1,23 @@
+{
+    "name": "nrk/monolog-fluent",
+    "type": "library",
+    "description": "A simple Monolog handler for Fluent",
+    "keywords": ["fluent", "monolog", "log", "logging"],
+    "homepage": "http://github.com/nrk/monolog-fluent",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniele Alessandri",
+            "email": "suppakilla@gmail.com",
+            "homepage": "http://clorophilla.net"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2",
+        "monolog/monolog": ">=1.0.0",
+        "fluent/logger": "master-dev"
+    },
+    "autoload": {
+        "psr-0": {"Nrk\\Fluent\\Monolog": "src/"}
+    }
+}

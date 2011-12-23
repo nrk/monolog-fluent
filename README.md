@@ -20,11 +20,13 @@ $log->addError("OH NOES!!11!1!");
 ```
 
 In order to be able to run the examples in the `examples` directory, you must first download
-the needed dependencies the `vendor` directory:
+the needed dependencies the `vendor` directory using [Composer](http://packagist.org/about-composer)
+by typing `composer install` in a shell. If Composer is not installed or globally available on
+your system then you can download its phar package and use it to install the dependencies:
 
 ```bash
-$ git clone git://github.com/Seldaek/monolog.git vendor/monolog
-$ git clone git://github.com/fluent/fluent-logger-php.git vendor/fluent-logger-php
+  $ wget http://getcomposer.org/composer.phar
+  $ php composer.phar install
 ```
 
 ## Dependencies ##
