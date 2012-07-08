@@ -33,7 +33,7 @@ your system then you can download its phar package and use it to install the dep
 
 - PHP >= 5.3.0
 - [Monolog](http://github.com/Seldaek/monolog) >= 1.0.0
-- [fluent-logger-php](http://github.com/fluent/fluent-logger-php) >= 0.1.0
+- [fluent-logger-php](http://github.com/fluent/fluent-logger-php) == 0.1.0
 
 ## Author ##
 
