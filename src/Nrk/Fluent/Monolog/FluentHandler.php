@@ -27,7 +27,6 @@ class FluentHandler extends AbstractProcessingHandler
 {
     protected $parameters;
     protected $logger;
-    protected $tag;
 
     /**
      * Initializes a new Fluent handler and guesses the right protocol to use
@@ -53,7 +52,6 @@ class FluentHandler extends AbstractProcessingHandler
         if (!isset($parameters['scheme'])) {
             $parameters['scheme'] = 'http';
         }
-        $this->tag = $tag;
 
         switch ($parameters['scheme']) {
             case 'http':
@@ -90,6 +88,6 @@ class FluentHandler extends AbstractProcessingHandler
 
         unset($record['formatted'], $record['datetime']);
 
-        $this->logger->post($this->tag, $record);
+        $this->logger->post($record['channel'], $record);
     }
 }
