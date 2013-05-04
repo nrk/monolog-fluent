@@ -27,6 +27,7 @@ class FluentHandler extends AbstractProcessingHandler
 {
     protected $parameters;
     protected $logger;
+    protected $tag;
 
     /**
      * Initializes a new Fluent handler and guesses the right protocol to use
@@ -52,24 +53,25 @@ class FluentHandler extends AbstractProcessingHandler
         if (!isset($parameters['scheme'])) {
             $parameters['scheme'] = 'http';
         }
+        $this->tag = $tag;
 
         switch ($parameters['scheme']) {
             case 'http':
                 $host = isset($parameters['host']) ? $parameters['host'] : '127.0.0.1';
                 $port = isset($parameters['port']) ? $parameters['port'] : HttpLogger::DEFAULT_HTTP_PORT;
-                $this->logger = new HttpLogger($tag, $host, $port);
+                $this->logger = new HttpLogger($host, $port);
                 break;
 
             case 'tcp':
             case 'fluent':
                 $host = isset($parameters['host']) ? $parameters['host'] : FluentLogger::DEFAULT_ADDRESS;
                 $port = isset($parameters['port']) ? $parameters['port'] : FluentLogger::DEFAULT_LISTEN_PORT;
-                $this->logger = new FluentLogger($tag, $host, $port);
+                $this->logger = new FluentLogger($host, $port);
                 break;
 
             case 'php':
                 $handle = fopen("{$parameters['scheme']}://{$parameters['host']}", 'w');
-                $this->logger = new ConsoleLogger($tag, $handle);
+                $this->logger = new ConsoleLogger($handle);
                 break;
 
             default:
@@ -88,6 +90,6 @@ class FluentHandler extends AbstractProcessingHandler
 
         unset($record['formatted'], $record['datetime']);
 
-        $this->logger->post($record);
+        $this->logger->post($this->tag, $record);
     }
 }
