@@ -73,7 +73,7 @@ class FluentHandler extends AbstractProcessingHandler
                 break;
 
             default:
-                throw new \RuntimeException("The specified protocol is not supported [$scheme]");
+                throw new \RuntimeException("The specified protocol is not supported [{$parameters['scheme']}]");
         }
     }
 
